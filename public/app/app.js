@@ -1,2 +1,2 @@
 //main config file
-angular.module('userApp', ['appRoutes', 'userControllers'])
+angular.module('userApp', ['appRoutes', 'userControllers', 'userServices', 'ngAnimate'])

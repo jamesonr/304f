@@ -1,21 +1,25 @@
-angular.module('userControllers', [])
+angular.module('userControllers', ['userServices'])
 
-.controller('regCtrl', function($http){
+.controller('regCtrl', function($http, $location, $timeout, User){
 
 var app= this;
 
   this.regUser = function(regData) {
-  app.errorMsg = false;
-  console.log('Form Submitted');
-  $http.post('/api/users', this.regData).then(function(data) {
-      console.log(data.data.success);
-      console.log(data.data.message);
+    app.loading = true;
+    app.errorMsg = false;
+    
+    User.create(app.regData).then(function(data) {
       if (data.data.success) {
+        app.loading = false;
         //Success message
-        app.successMsg = data.data.message
+        app.successMsg = data.data.message + '...Redirecting';
         //Homepage Redirect
-      }else {
+        $timeout(function() {
+          $location.path('/');
+        }, 2500); //adds delay to redirect
+      } else {
         //Create error Message
+        app.loading = false;
         app.errorMsg = data.data.message;
       }
     });

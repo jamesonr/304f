@@ -1,0 +1,41 @@
+main  {
+  padding-top:30px
+}
+/*HEADER
+=========================*/
+header .navbar {
+  border-radius:0;
+}
+
+/*NG ANIMATE
+===========================*/
+
+/* SHOW & HIDE*/
+.show-hide-message.ng-hide-remove {
+  -webkit-animation:zoomIn 0.3s both ease;
+  -moz-animation:zoomIn 0.3s both ease;
+  animation:zoomIn 0.3 both ease;
+}
+
+/* ANIMATIONS
+===========================*/
+.spinner {
+  -webkit-animation:zoomIn 1s infine both ease;
+  -moz-animation:zoomIn 1s infinite both ease;
+  animation:zoomIn 1s infinite both ease;
+
+}
+@keyframes spin{
+  from { transform:rotate(0deg); }
+  to { transform:rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+  from {-webkit-transform:rotat(0deg); }
+  to { -webkit-transform:rotate(360deg); }
+
+}
+@-moz-keyframes spin {
+  from { -moz-transform:rotate(0deg); }
+  to {-moz-transform:rotate(360deg); }
+}
