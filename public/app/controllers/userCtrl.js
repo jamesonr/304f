@@ -5,6 +5,7 @@ angular.module('userControllers', [])
 var app= this;
 
   this.regUser = function(regData) {
+  app.errorMsg = false;
   console.log('Form Submitted');
   $http.post('/api/users', this.regData).then(function(data) {
       console.log(data.data.success);
