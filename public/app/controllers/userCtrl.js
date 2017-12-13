@@ -1,12 +1,22 @@
 angular.module('userControllers', [])
 
-.controller('regCtrl', function($http)
- {
+.controller('regCtrl', function($http){
+
+var app= this;
+
   this.regUser = function(regData) {
   console.log('Form Submitted');
-  console.log(this.regData);
   $http.post('/api/users', this.regData).then(function(data) {
-      console.log(data);
+      console.log(data.data.success);
+      console.log(data.data.message);
+      if (data.data.success) {
+        //Success message
+        app.successMsg = data.data.message
+        //Homepage Redirect
+      }else {
+        //Create error Message
+        app.errorMsg = data.data.message;
+      }
     });
   };
 });
