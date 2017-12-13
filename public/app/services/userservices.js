@@ -1,6 +1,6 @@
 //this was made so dont have to repeat http post statement
 angular.module('userServices', [])
-
+//factory for custom functions 
 .factory('User', function($http){
   userFactory = {};
 
