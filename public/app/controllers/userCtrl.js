@@ -1,3 +1,7 @@
-angular.module)'userControllers', [].config(function() {
-  console.log('testing new module');
-})
+angular.module('userControllers', [])
+
+.controller('regCtrl', function() {
+  this.regUser = function() {
+  console.log('test new button');
+  };
+});
