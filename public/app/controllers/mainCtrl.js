@@ -3,16 +3,23 @@ angular.module('mainController', ['authServices'])
   .controller('mainCtrl', function(Auth, $timeout, $location, $rootScope) {
     var app = this;
 
+    app.loadme = false;
+
     $rootScope.$on('$routeChangeStart', function() {
       if (Auth.isLoggedIn()) {
         console.log('Sucess: user logged in');
+        app.isLoggedIn = true;
         Auth.getUser().then(function(data) {
           console.log(data.data.username);
           app.username = data.data.username;
+          app.useremail = data.data.email;
+          app.loadme = true;
         });
       } else {
         console.log('Failure: user not logged in');
+        app.isLoggedIn = false;
         app.username = ''; //to clear name when logged out
+        app.loadme = true;
       }
     });
 
