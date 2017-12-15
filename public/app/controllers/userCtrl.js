@@ -73,15 +73,29 @@ angular.module('userControllers', ['userServices'])
           restrict: 'A', // Restrict to HTML Attribute
           controller: function($scope) {
 
+            $scope.confirmed = false;
             $scope.doConfirm = function(values) {
-              console.log(values);
+                values.forEach(function(ele) {
+                  if($scope.confirm == ele) {
+                    $scope.confirmed = true;
+
+                  }else {
+                    $scope.confirmed = false;
+
+                  }
+                });
             }
           },
 
           link: function(scope, element, attrs) {
             attrs.$observe('match', function() {
-              scope.doConfirm(attrs.match);
+              scope.matches = JSON.parse(attrs.match);
+              scope.doConfirm(scope.matches);
             });
+              scope.$watch('confirm', function(){
+                scope.matches = JSON.parse(attrs.match);
+                scope.doConfirm(scope.matches);
+              });
           }
         };
       })
